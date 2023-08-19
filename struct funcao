@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef struct{
+	float Peso;
+	int Idade;
+	float Altura;
+}Pessoa;
+
+void imprimePessoa(Pessoa p){
+	printf("idade %d peso: %.2f altura %.2f	\n",p.Idade, p.Peso, p.Altura);
+}
+
+void setPessoa(Pessoa *p, int idade, float peso, float altura){
+	(*p).Idade = idade;
+	p->Peso = peso;
+	p->Altura = altura;
+}
+
+int main() {
+	
+	Pessoa Joao;
+	setPessoa(&Joao, 15, 70.5, 1.75);
+	imprimePessoa(Joao);
+	
+	
+	
+	return 0;
+}
