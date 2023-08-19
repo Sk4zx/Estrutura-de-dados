@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+typedef struct{
+	char Titulo[20];
+	int Classificacao;
+	char Diretor[20];
+	char Genero[20];
+	char Duracao[20];
+}Filme;
+
+void imprimeFilme(Filme F){
+	printf("titulo: %s\nclassificacao: %d\ndiretor: %s\ngenero: %s\nduracao: %s",F.Titulo, F.Classificacao, F.Diretor, F.Genero, F.Duracao);
+}
+
+void setFilme(Filme *F, char titulo[20], int classificacao, char diretor[20], char genero[20], char duracao[20]){
+	
+	
+	strncpy(F->Titulo, titulo, sizeof(F->Titulo)-1);		
+	F->Classificacao = classificacao;
+	strncpy(F->Diretor, diretor, sizeof(F->Diretor)-1);
+	strncpy(F->Genero, genero, sizeof(F->Genero)-1);
+	strncpy(F->Duracao, duracao, sizeof(F->Duracao)-1);
+}
+
+int main() {
+	
+	Filme op;
+	setFilme(&op, "oppenheimer",9, "um diretor", "um genero", "3hrs");
+	imprimeFilme(op);
+	
+	
+	return 0;
+}
