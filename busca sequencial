@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+	
+	int i, n, vet[5];
+	srand(time(NULL));
+	
+	for(i=0;i<5;i++){
+		vet[i] = rand()%1001;
+		printf("%d\t", vet[i]);
+	}	
+	printf("\n\nQual o valo que deseja buscar: ");
+	scanf("%d",&n);
+	
+	for(i=0;i<5;i++){
+		if(vet[i]==n){
+			printf("%d ocorre na posicao %d do vetor", n, i);
+		}
+	}
+	
+	return 0;
+}
