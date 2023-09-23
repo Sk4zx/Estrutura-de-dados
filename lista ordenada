@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura do nó da lista
+struct Node {
+    int valor;
+    struct Node* proximo;
+};
+
+// Função para criar um novo nó
+struct Node* criarNovoNo(int valor) {
+    struct Node* novoNo = (struct Node*)malloc(sizeof(struct Node));
+    novoNo->valor = valor;
+    novoNo->proximo = NULL;
+    return novoNo;
+}
+
+// Função para inserir um elemento na lista de forma ordenada
+void inserirOrdenado(struct Node** lista, int valor) {
+    struct Node* novoNo = criarNovoNo(valor);
+
+    // Se a lista estiver vazia ou o valor for menor que o primeiro elemento
+    if (*lista == NULL || valor <= (*lista)->valor) {
+        novoNo->proximo = *lista;
+        *lista = novoNo;
+    } else {
+        struct Node* atual = *lista;
+        // Encontra o nó onde o valor deve ser inserido
+        while (atual->proximo != NULL && atual->proximo->valor < valor) {
+            atual = atual->proximo;
+        }
+        novoNo->proximo = atual->proximo;
+        atual->proximo = novoNo;
+    }
+}
+
+// Função para exibir os elementos da lista
+void mostrarLista(struct Node* lista) {
+    struct Node* atual = lista;
+    while (atual != NULL) {
+        printf("%d ", atual->valor);
+        atual = atual->proximo;
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Node* lista = NULL;
+    int i, valores[] = {3, 8, 4, 2, 5};
+    int tamanho = sizeof(valores) / sizeof(valores[0]);
+
+    // Inserir elementos na lista ordenadamente
+    for (i = 0; i < tamanho; i++) {
+        inserirOrdenado(&lista, valores[i]);
+    }
+
+    // Exibir a lista ordenada
+    mostrarLista(lista);
+    
+
+    return 0;
+}
