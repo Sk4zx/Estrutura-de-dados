@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int buscaBinaria(int inicio, int fim, int n, int vet[]) {
+    while (inicio <= fim) {
+        int meio = (inicio + fim) / 2;
+        if (vet[meio] == n) {
+            return meio;
+        } else if (vet[meio] < n) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+    return -1; // Retorna -1 se o elemento não for encontrado
+}
+
+int main() {
+    int vet[5] = {2, 3, 4, 5, 8};
+    int valor = 5;
+    
+    int resultado = buscaBinaria(0, 4, valor, vet);
+    
+    if (resultado != -1) {
+        printf("O valor %d foi encontrado na posição %d.\n",valor, resultado);
+    } else {
+        printf("O valor %d não foi encontrado no vetor.\n",valor);
+    }
+
+    return 0;
+}
