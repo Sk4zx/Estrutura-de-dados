@@ -1,5 +1,13 @@
 //Bubble
-
+for(i=0;i<=5;i++){
+		for(n=0;n<=3;n++){
+			if(vetor[n]>vetor[n+1]){
+				aux = vetor[n];
+				vetor[n] = vetor[n+1];
+				vetor[n+1] = aux;
+			}
+		}
+	}
 //insertion
 void insertionSort(int vet[], int n) {
     int i, key, j;
