@@ -1,7 +1,7 @@
 //Bubble
 for(i=0;i<=5;i++){
 		for(n=0;n<=3;n++){
-			if(vetor[n]>vetor[n+1]){
+			if(vetor[n]>vetor[n+1]){ //aqui
 				aux = vetor[n];
 				vetor[n] = vetor[n+1];
 				vetor[n+1] = aux;
@@ -15,7 +15,7 @@ void insertionSort(int vet[], int n) {
         key = vet[i];
         j = i - 1;
 
-        while (j >= 0 && vet[j] > key) {
+        while (j >= 0 && vet[j] > key) { //aqui
             vet[j + 1] = vet[j];
             j = j - 1;
         }
@@ -24,3 +24,32 @@ void insertionSort(int vet[], int n) {
 }
 
 //quick
+void quick_sort(int *a,int left, int right){
+	int i, j, x, y;
+	
+	i=left;
+	j=right;
+	x=a[(left+right)/2];
+	
+	while(i<=j){
+		while(a[i] < x && i<right){ //aqui
+			i++;
+		}
+		while(a[j] > x && j>left){ //aqui
+			j--;
+		}
+		if(i<=j){
+			y=a[i];
+			a[i]=a[j];
+			a[j]=y;
+			i++;
+			j--;
+		}
+	}
+	if(j>left){
+		quick_sort(a, left, j);
+	}
+	if(i< right){
+		quick_sort(a, i, right);
+	}
+}
